@@ -8,7 +8,7 @@ SamplingFilter::SamplingFilter(int Nb, std::string inputfilename){
 }
 
 GroupType::Pointer SamplingFilter::GetOuput(){
-    if(1)//this->inputFibers!=NULL) // CHECK LATER ! ! !
+    if(this->outputFibers.IsNotNull()) // CHECK LATER ! ! !
     {
         std::auto_ptr<ChildrenListType> children(this->inputFibers->GetChildren(0));
         typedef ChildrenListType::const_iterator IteratorType;
