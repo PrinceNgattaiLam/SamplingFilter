@@ -1,6 +1,7 @@
 #ifndef FIBERPROCESSING_H
 #define FIBERPROCESSING_H
 
+// VTK INCLUDES
 #include <vtkPolyDataReader.h>
 #include <vtkPolyDataWriter.h>
 #include <vtkXMLPolyDataReader.h>
@@ -9,13 +10,15 @@
 #include <vtkSmartPointer.h>
 #include <vtkPolyData.h>
 #include <itkSymmetricSecondRankTensor.h>
-#include <itkDTITubeSpatialObject.h>
 #include <vtkDataArray.h>
 #include <vtkPointData.h>
 #include <vtkFloatArray.h>
+
+// ITK INCLUDES
 #include <itkGroupSpatialObject.h>
 #include <itkExceptionObject.h>
 #include <itkSpatialObjectReader.h>
+#include <itkDTITubeSpatialObject.h>
 
 typedef itk::GroupSpatialObject<3> GroupType;
 typedef GroupType::ChildrenListType ChildrenListType;

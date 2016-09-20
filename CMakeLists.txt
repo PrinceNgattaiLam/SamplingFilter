@@ -11,7 +11,7 @@ find_package(ITK REQUIRED)
 
 #Find Qt Package
 
-#find_package(Qt4 4.4.3 REQUIRED QtGui)
+find_package(Qt4 4.4.3 REQUIRED QtGui)
 
 include(${VTK_USE_FILE})
 include(${ITK_USE_FILE})

@@ -4,14 +4,16 @@
 #include <itkGroupSpatialObject.h>
 #include <vtkCellArray.h>
 #include <vtkSmartPointer.h>
+#include <itkDTITubeSpatialObject.h>
 
 typedef itk::GroupSpatialObject<3> GroupType;
+typedef GroupType::ChildrenListType ChildrenListType;
+typedef itk::DTITubeSpatialObjectPoint<3> DTIPointType;
 
 class SamplingFilter{
 public:
     /** Constructor & Destructor */
-    SamplingFilter(int NbSamples, std::string inputFibers);
-
+    SamplingFilter(int NbSamples, std::string inputfilename);
     ~SamplingFilter();
 
     /** Main Functions */
@@ -22,14 +24,12 @@ public:
 
 private:
     /** Internal Functions*/
- GroupType::Pointer Sampling(); // Create a new fiber with the good number of samples
+ void sampling_unit(ChildrenListType::const_iterator it); // Create a new fiber with the good number of samples
 
     /** Variables */
-    vtkSmartPointer<vtkCellArray> inputFibers;
+    GroupType::Pointer inputFibers;
+    GroupType::Pointer outputFibers;
     int nbSamples;
-
-
-
 
 };
 
