@@ -19,7 +19,7 @@ public:
     /** Main Functions */
     void SetInput(std::string inputFibers);
     void SetNbSamples(int NbSamples);
-    GroupType::Pointer GetOuput();
+    GroupType::Pointer GetOutput();
 
 
 private:

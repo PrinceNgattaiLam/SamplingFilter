@@ -1,13 +1,17 @@
 #include "fiberprocessing.h"
 #include "samplingfilter.h"
 #define E(X) ((int)X)
+
 SamplingFilter::SamplingFilter(int Nb, std::string inputfilename){
     this->SetInput(inputfilename);
     this->SetNbSamples(Nb);
     this->outputFibers=GroupType::New();
 }
 
-GroupType::Pointer SamplingFilter::GetOuput(){
+
+SamplingFilter::~SamplingFilter(){};
+
+GroupType::Pointer SamplingFilter::GetOutput(){
     if(this->outputFibers.IsNotNull()) // CHECK LATER ! ! !
     {
         std::auto_ptr<ChildrenListType> children(this->inputFibers->GetChildren(0));

@@ -1,17 +1,13 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-PROJECT(FiberTractSampling)
+PROJECT(SamplingFilter)
 
 #Find VTK Package
 find_package(VTK REQUIRED)
 
 #Find ITK Package
 find_package(ITK REQUIRED)
-
-#Find Qt Package
-
-find_package(Qt4 4.4.3 REQUIRED QtGui)
 
 include(${VTK_USE_FILE})
 include(${ITK_USE_FILE})

@@ -1,14 +1,34 @@
 #include "samplingfilter.h"
 #include "samplingfilter.hxx"
-//#include "fiberprocessing.h"
+#include "fiberprocessing.h"
 
 int main (int argc, char* argv[])
 {
     GroupType::Pointer test;
-    float x = 0.12;
-    //std::cout<<"X = "<<D(x)<<std::endl;
-    //test = read_fiber("/work/dprince/AutoTract/Outputs/neo-0398-1-2year_42_DWI_QCed_VC_Upx2_DTI_stripped_embed.nrrd/Ped/3.PostProcess/Arc_L_FT_bundle_clean/Arc_L_FT_bundle_clean_processed.vtp");
-    //write_fiber("../ExampleOutput.vtp",test);
+    SamplingFilter Filter(100,"Inputs/Arc_L_FT_bundle_clean_processed.vtp");
+    Filter.SetNbSamples(200);
+    Filter.SetInput("Inputs/Arc_L_FT_bundle_clean_processed.vtp");
+    write_fiber("Outputs/ExampleOutput.vtp",Filter.GetOutput());
+
+    // Read all the data from the file
+     vtkSmartPointer<vtkXMLPolyDataReader> reader = vtkSmartPointer<vtkXMLPolyDataReader>::New();
+     reader->SetFileName("Outputs/ExampleOutput.vtp");
+     reader->Update();
+
+    vtkSmartPointer<vtkPolyData> linesPolyData = reader->GetOutput();
+
+    std::cout << "There are " << linesPolyData->GetNumberOfLines() << " lines." << std::endl;
+
+    linesPolyData->GetLines()->InitTraversal();
+    vtkSmartPointer<vtkIdList> idList = vtkSmartPointer<vtkIdList>::New();
+    int i=0;
+    while(linesPolyData->GetLines()->GetNextCell(idList))
+      {
+      std::cout << "Line #"<<i<< " has " << idList->GetNumberOfIds() << " points." << std::endl;
+      std::cout << std::endl;
+      i++;
+      }
+    return EXIT_SUCCESS;
 
     return 0;
 }
