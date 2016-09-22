@@ -9,12 +9,12 @@
 #include <vtkCellArray.h>
 #include <vtkSmartPointer.h>
 #include <vtkPolyData.h>
-#include <itkSymmetricSecondRankTensor.h>
 #include <vtkDataArray.h>
 #include <vtkPointData.h>
 #include <vtkFloatArray.h>
 
 // ITK INCLUDES
+#include <itkSymmetricSecondRankTensor.h>
 #include <itkGroupSpatialObject.h>
 #include <itkExceptionObject.h>
 #include <itkSpatialObjectReader.h>
@@ -25,8 +25,8 @@ typedef GroupType::ChildrenListType ChildrenListType;
 typedef itk::DTITubeSpatialObjectPoint<3> DTIPointType;
 
 
-GroupType::Pointer read_fiber(std::string filename); // Read the bunch of fibers at the location in parameter and return an array where each cell is a different fiber
+GroupType::Pointer readFiberFile(std::string filename); // Read the bunch of fibers at the location in parameter and return an array where each cell is a different fiber
 
-void write_fiber(const std::string &filename, GroupType::Pointer fibergroup); // write the bunch of fibers at the location in parameter return an array where each cell is a different fiber
+void writeFiberFile(const std::string &filename, GroupType::Pointer fibergroup); // write the bunch of fibers at the location in parameter return an array where each cell is a different fiber
 
 #endif // FIBERPROCESSING_H
